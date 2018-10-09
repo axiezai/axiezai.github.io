@@ -33,6 +33,3 @@ source "https://rubygems.org"
 gem "github-pages", group: :jekyll_plugins
 
 gem "jekyll-default-layout"
-
-# Google Analytics Install
-gem "jekyll-analytics"
