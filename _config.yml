@@ -28,16 +28,10 @@ github_username:  axiezai
 # Build settings
 markdown: kramdown
 theme: minima
-whitelist: [jekyll-analytics]
+
 plugins:
   - jekyll-feed
   - jekyll-default-layout
-  - jekyll-analytics
-
-jekyll_analytics:
-  GoogleAnalytics:          # Add, if you want to track with Google Analytics
-    id: UA-125027007-1          # Required - replace with your tracking id
-    anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
 
 google_analytics: UA-125027007-1
 # Exclude from processing.
