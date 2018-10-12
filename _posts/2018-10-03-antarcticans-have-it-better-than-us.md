@@ -45,3 +45,9 @@ A direct quote from *Sapiens*:
 **"But did we decrease the amount of suffering in the world? Time and again, massive increases in human power did not necessarily improve the well-being of individual Sapiens, and usually caused immense misery to other animals."**
 
 Humans have become the most irresponsible predators, continuously destroying our ecosystem without an end in sight. Humans are related to other species, and we eat them to live, should we be responsible for these species? Our predative nature is enhanced by technology, knowledge, and ideas, and we are the least intelligent predators in nature. By understanding ourselves as animals, by understanding other species as intelligent, and by understanding the intelligence of predators, perhaps, we can transform ourselves into intelligent predators.
+
+Books I referenced, occasionally paraphrased, and took inspiration from, highly recommended readings if this stuff sparked something in you:
+
+- Narby, Jeremy. *Intelligence in Nature: an Inquiry into Knowledge*. Jeremy P. Tarcher/Penguin, 2006.
+
+- Harari, Yuval N., et al. *Sapiens: a Brief History of Humankind*. Harper Perennial, 2018.
