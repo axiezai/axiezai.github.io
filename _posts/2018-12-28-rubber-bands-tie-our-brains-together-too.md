@@ -35,14 +35,14 @@ We can get artsy with these vectors and draw out all the fiber connections insid
 <figcaption style = "font-size:65%; text-align:center">White matter fibers inside a human brain</figcaption>
 </p>
 
-Unfortunately, instead of the colorful image, researchers get a matrix of numbers representing a weighted scalar of the connection strength between pairs of brain regions:
+Unfortunately, instead of the colorful image, researchers work with a matrix of weighted scalars representing connection strength between pairs of brain regions:
 
 <p align = "center">
 <img src = "/figures/b03_fs2_scmatrix.png" style = "width:350px">
 <figcaption style = "font-size:65%; text-align:center;"> Structural connectivity matrix, notice how the intra-hemisphere connections are dense (near the diagonal), whereas the inter-hemisphere connections are sparse (off-diagonal squares). Colors inside the matrix represent the connectivity strength between regions. </figcaption>
 </p>
 
-The obvious flaw in this matrix is that there is no spatial information about the data points. We only know the connection strengths between regions, but we do not know the location of each brain region, and we have no coordinate system defining the relative distance between each adjacent brain region. While this is a fatal weakness in our data, by utilizing rubber bands, i.e., spectral clustering, we can group these data points onto a graph representation of the brain without spatial information. 
+The obvious flaw in this matrix is that there is no spatial information about the data points. We only know the connection strengths between regions, but we do not know the location of each brain region, and we have no coordinate system defining the relative distance between each adjacent brain region. While this is a fatal weakness in our data, by utilizing rubber bands, i.e., spectral clustering, we can group these data points onto a brain without spatial information. 
 
 ## Basic graph representation and graph notation
 Given this set of $N$ brain regions $x_1, ..., x_N$ and connection strength $c_{i,j} \geq 0$ between all pairs of brain regions $x_i$ and $x_j$, we can transform this data into a simple representation on a graph: $G = (V,E)$. Each node $V_i$ in this graph ($G$) represents a brain region $x_i$. Two nodes are are connected if the connection strength $c_{i,j}$ between the brain regions $x_i$ and $x_j$ is bigger than zero (or a threshold), then the edge (E) between the two nodes is weighted by $c_{i,j}$. 
@@ -70,19 +70,75 @@ L = I - D^{-1} C
 \end{gathered}
 $$
 
-After transforming our data into the graph Laplacian, we can rephrase the clustering problem: **we want to find a partition of the graph such that the edges between different groups have low weights (different clusters are less likely to be associated with each other), and the edges within a group have high weights (data points within the same cluster are closely associated).** To keep our sanities in tact, this notation is sufficient for our purpose, I am neglecting some details such as directionality ($c_{i,j} = c_{j,i} \geq 0$) and local neighborhood relationships inside the graph.
+After transforming our data into the graph Laplacian, we can rephrase the clustering problem: **we want to find a partition of the graph such that the edges between different groups have low weights (different clusters are less likely to be associated with each other), and the edges within a group have high weights (data points within the same cluster are closely associated).** To keep our sanities in tact, I am neglecting some details such as directionality ($c_{i,j} = c_{j,i} \geq 0$) and local neighborhood relationships inside the graph.
 
 ## Spectral clustering
+To cluster our $L$s and visualize the clusters on brains, we only need a couple lines of code thanks to open source communities like [`scikit-learn`](https://scikit-learn.org/stable/) and [`nilearn`](https://nilearn.github.io/). I'm going to be skipping a lot of code snippets here, but here's the gist: 
 
-
-## Rubber band interpretation
-
+Import the libraries, we will use `scikit-learn` for spectral clustering and `nilearn` for brain plots.
 ```python
-spectral   = sklearn.cluster.SpectralClustering(n_clusters=2, affinity='precomputed')
-patient_ID = 0
-spectral.fit(kernelized_matrices[patient_ID])
-color = spectral.labels_
-plot_glass_brain(color)
+import sklearn.cluster
+from nilearn import plotting
 ```
 
-### Generalized spectral clustering algorithm:
+Assuming we have a $L$ that's normalized and inverted so that high values become closer to $0$, meaning they are near each other in "similarity" space, we will try to group our connection strengths into **two** groups first:
+```python
+spectral   = sklearn.cluster.SpectralClustering(n_clusters=2, affinity='precomputed')
+spectral.fit(similarity_matrix_L)
+```
+
+This command will output labels to our data points named `spectral.labels_`, we can use this to colorcode our data points! By using `nilearn`'s `plot_connectome` function, we can visualize our two groups in a brain:
+
+<p align = "center">
+<img src = "/figures/b03_ncluster2.png">
+</p>
+
+The spectral clustering function itself received no information regarding brain region locations, the algorithm was not given a set of labels and coordinates of each brain region. It was only given connection strengths between about 90 data points, but somehow it managed to separate the brain into left and right hemispheres!
+
+Let's see what clustering into **four** groups look like:
+
+<p align = "center">
+<img src = "/figures/b03_ncluster4.png">
+</p>
+
+We are starting to see anterior and posterior separation! What about **five**:
+
+<p align = "center">
+<img src = "/figures/b03_ncluster5.png">
+</p>
+
+In addition to the four big lobes, we are starting to see functionally specialized regions being highlighted. The new group right in the middle of the two hemispheres include regions like the precuneus, and the cingulum. These are some of the earliest identified brain structures, and obviously play critical roles in brain function.
+
+## Rubber band interpretation
+So why does this grouping happen? The name <em>spectral</em> clustering comes from spectral graph theory, which is the study of a graph's characteristic polynomials, or eigen values and eigen vectors of a graph. Remember when I mentioned graph Laplacians have "nice" eigen properties? All spectral clustering algorithms rely on these "nice" eigen properties. 
+
+One can interpret spectral clustering as stretching a bunch of interconnected rubber bands: how would the rubber bands bounce around in response to a perturbation? Or in terms of eigen vectors: how would the characteristics (eigen vectors and eigen values) of a network of rubber bands $M$ change if we add a small perturbation $P$? Then we consider a perturbed network of rubber bands $\widetilde{M} = M + P$, then the distance in eigen-space between the eigen vectors of $\widetilde{M}$ and $M$ is simply some scalar times the norm of $P$.
+
+In an ideal scenario where we want $k$ clusters of a similarity matrix $M$, where the data points in each $i$-th cluster $k_i$ have a similarity of 0 (no difference at all, exactly the same), then the eigen vectors of this $M$ will represent each cluster as:
+
+$$
+\begin{bmatrix}
+1 & 0 & ... & 0\\ 
+0 & 1 & ... & 0\\ 
+\vdots & \vdots & \ddots  & \vdots\\ 
+0 & 0 & ... & 1
+\end{bmatrix}
+$$
+
+And all data points belonging to the same cluster $k_i$ will coincide to the $i$-th eigen vector. Any simple clustering algorithm can trivially separate these data points. 
+
+Now in the case of our brain connection strengths ($C$), we are far from ideal, but we know this is some distance away from this ideal matrix $M$: $C = M + P$. Now if we minimize the distance shared by the ideal and perturbed eigen vectors, we can claim that the perturbed eigen vectors behave approximately the same as the ideal eigen vectors. **This is just the mathy way of saying, let's stretch out this network of rubber bands, and observe their behavior as they relax back to their natural state, and we will categorize these rubber bands based on their relaxation behavior.**
+
+Spectral clustering and utilizing Laplacian eigen vectors is much more poweful than simply clustering data points as they are. Here's a good example of k-means algorithm vs. spectral clustering, where the k-means algorithm fails to determine the best separation between the data points:
+
+<p align = "center">
+<img src = "/figures/b03_kmeans_comparison.png">
+<figcaption style = "font-size:65%; text-align : center;">Source: CMU's ML course slides</figcaption>
+</p>
+
+In spectral clustering, rather than computing the variances in a raw dataset, we use a dataset's innate properties! We stretch the data around to see how it would react, and group them together based on their spectral properties. This methodology is extremely popular in machine learning, and has been extended to all sorts of data science settings. It's a neat little tool to keep in every neuroscientist's pockets.
+
+<em>Resources used while writing this post:</em>
+- The Lab post-doc [Pablo Damasceno's](https://github.com/pfdamasceno/spectral_decomposition) jupyter notebook on spectral clustering. He presented this metholody at a lab meeting first :). 
+
+- Von Luxburg, U. (2007). A tutorial on spectral clustering. Statistics and Computing, 17(4), 395–416. https://doi.org/10.1007/s11222-007-9033-z
