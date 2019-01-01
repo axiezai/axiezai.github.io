@@ -43,7 +43,7 @@ Instead of the colorful image, researchers work with a matrix of weighted scalar
 The obvious flaw in this matrix is that there is no spatial information about the data points. We only know the connection strengths between regions, but we do not know the location of each brain region, and we have no coordinate system defining the relative distance between each adjacent brain region. While this is a fatal weakness in our data, by utilizing rubber bands, i.e., spectral clustering, we can group these data points onto a brain without spatial information. 
 
 ## Basic graph representation and graph notation
-Given this set of $N$ brain regions $x_1, ..., x_N$ and connection strength $c_{i,j} \geq 0$ between all pairs of brain regions $x_i$ and $x_j$, we can transform this data into a simple representation on a graph: $G = (V,E)$. Each node $V_i$ in this graph ($G$) represents a brain region $x_i$. Two nodes are are connected if the connection strength $c_{i,j}$ between the brain regions $x_i$ and $x_j$ is bigger than zero (or a threshold), then the edge (E) between the two nodes is weighted by $c_{i,j}$. 
+Given this set of $N$ brain regions $x_1, ..., x_N$ and connection strength $c_{i,j} \geq 0$ between all pairs of brain regions $x_i$ and $x_j$, we can transform this data into a simple representation on a graph: $G = (V,E)$. Each node $V_i$ in this graph ($G$) represents a brain region $x_i$. Two nodes are connected if the connection strength $c_{i,j}$ between the brain regions $x_i$ and $x_j$ is bigger than zero (or a threshold), then the edge (E) between the two nodes is weighted by $c_{i,j}$. 
 
 <p align = "center">
 <img src = "https://upload.wikimedia.org/wikipedia/commons/2/2f/Small_Network.png" style = "width:250">
@@ -105,7 +105,7 @@ We are starting to see anterior and posterior separation! What about **five**:
 <img src = "/figures/b03_ncluster5.png">
 </p>
 
-In addition to the four big lobes, we are starting to see functionally specialized regions being highlighted. The new group right in the middle of the two hemispheres include regions like the precuneus, and the cingulum. These are some of the earliest identified brain structures, and obviously play critical roles in brain function.
+In addition to the four big lobes, we are starting to see functionally specialized regions being highlighted. The new group right in the middle of the two hemispheres include regions like the precuneus, occipital lobe, and the cingulum. These are some of the earliest identified brain structures with the heaviest wirings inside the brain.
 
 ## Rubber band interpretation
 So why does this grouping happen? The name <em>spectral</em> clustering comes from spectral graph theory, which is the study of a graph's characteristic polynomials, or eigen values and eigen vectors of a graph. Remember when I mentioned graph Laplacians have "nice" eigen properties? All spectral clustering algorithms rely on these "nice" eigen properties.
@@ -121,9 +121,9 @@ $$
 \end{bmatrix}
 $$
 
-And all data points belonging to the same cluster $k_i$ will coincide to the $i$-th eigen vector. Any simple clustering algorithm can trivially separate these data points.
+All clusters are distinctly different from each other, and all data points belonging to the same cluster $k_i$ will coincide to the $i$-th eigen vector. Any simple clustering algorithm can trivially separate these data points.
 
-Now in the case of our brain connection strengths ($C$), we are far from ideal, but we know this is some distance away from this ideal matrix $M$: $C = M + P$, where $P$ is a perturbation. Now if we minimize the distance shared by the ideal and perturbed eigen vectors, we can claim that the perturbed eigen vectors behave approximately the same as the ideal eigen vectors. **This is just the mathy way of saying, let's stretch out this network of rubber bands, and observe if they can be stretched to our ideal scenario, and we will categorize these rubber bands based on our expected ideal scenario as best as we can.** One ends up interpreting spectral clustering as stretching a bunch of interconnected rubber bands: how much change does the rubber bands experience if we stretched it? Or in terms of eigen vectors: how would the eigen vectors and eigen values of a network $M$ change if we add a small perturbation $P$?
+In the case of our brain connectivity ($C$), we are far from ideal, but we know this is some distance away from the ideal matrix $M$: $C = M + P$, where $P$ is a perturbation of the network that transforms $M$ to $C$. Now if we quantify the changes in eigen vectors and eigen values with the perturbation $P$, we can claim that the perturbed eigen vectors behave approximately the same as the ideal eigen vectors if the difference between the two is minimized. **This is just the mathy way of saying, let's stretch out this network of rubber bands, and observe if they can be stretched to our ideal scenario, and we will categorize these rubber bands based on our expected ideal scenario as best as we can.** 
 
 Spectral clustering and utilizing Laplacian eigen vectors is much more poweful than simply clustering data points as they are. Here's a good example of k-means algorithm vs. spectral clustering, where the k-means algorithm fails to determine the best separation between the data points:
 
