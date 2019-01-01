@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 <img src = "/figures/profile.jpg" style = "float:right;width:250px;">
-I'm a biomedical engineer that became jaded with the industry and went back to school. In the midst of my neuroscience Ph.D. candidacy at Weill Cornell Medicine (Yes, that's Cornell University's medical branch), my P.I. decided to move our operation across the country, and I suddenly find myself lost in the misty fog that shrouds the Bay Area.
+I'm a biomedical engineer that became jaded with the industry and went back to school. In the midst of my neuroscience Ph.D. candidacy at Weill Cornell Graduate School of Medical Sciences, my P.I. decided to move our operation across the country, and I suddenly find myself lost in the misty fog that shrouds the Bay Area.
 
-Neuroscience is an interdisciplinary field, and you can expect the same variety from these blogs. My current UCSF lab (site still under construction by me, this page is also practice grounds for html) is always finding creative ways to apply mathematical models and computation algorithms to brain dynamics. One such combination is extracting graph properties of brain networks to investigate neurological disorders like dementia, neurodegeneration, traumatic brain injury, and epilepsy. This work requires techniques in neuroimaging, signal processing, computational biology/neurology, model optimization, and lots of traveling between the time and frequency worlds.
+Neuroscience is an interdisciplinary field, and you can expect the same variety from these blogs. My current [UCSF lab](https://rajlab.ucsf.edu/) is always finding creative ways to apply mathematical models and computation algorithms to brain dynamics. One such combination is extracting graph properties of brain networks to investigate neurological disorders like dementia, neurodegeneration, traumatic brain injury, and epilepsy. This work requires techniques in neuroimaging, signal processing, computational biology/neurology, model optimization, and lots of traveling between the time and frequency worlds.
 
 Outside of the lab, I'm capitalizing on every single opportunity to play volleyball, no matter indoors or outdoors. Currently dedicating my leisure times to learning piano/keyboard. I also love reading on commutes, and the best commutes are when I'm collecting passport stamps. 
 
