@@ -14,8 +14,6 @@ Rubber bands in brains? Brief intro to graph representations and the mysteries b
 <figcaption style = "font-size:65%">Source: xkcd.com/1158/</figcaption>
 </p>
 
-Hello, readers, look at your rubber band, now back to my rubber band, now back at your rubber band, now back to mine. Sadly, your rubber band isn't as cool as mine, but if your rubber band understood graph theory, it could be as cool as mine. Look down, back up, where are you? You're inside a brain with your rubber band. What's in your hand? Back at me, I have it, it's a spectral clustering algorithm. Look again, the brain's connected by my cool rubber bands. [I'm imaginging Old Spice commercials.](https://www.youtube.com/watch?v=owGykVbfgUE)
-
 People use hair bands to bundle up their messy hair all the time. As it turns out, this simple act of using elasticity is similar to a clustering approach that groups together messy data. Here, I'd like to show some cool brains as an introduction to spectral clustering, and explain how a popular clustering algorithm can be simply viewed as perturbations of rubber bands.
 
 My lab is often curious about how the brain's structure lead to function. In the case of human brains, the architecture of axons and their myelinated sheath facilitate the diffusion of water molecules along their main directions. By estimating the diffusion gradient in various ${x,y,z}$ directions, we can map out the underlying fiber structure that connects specialized brain regions of interest. The raw data is simply a bunch of estimated vectors in the ${x,y,z}$ directions:
@@ -35,7 +33,7 @@ We can get artsy with these vectors and draw out all the fiber connections insid
 <figcaption style = "font-size:65%; text-align:center">White matter fibers inside a human brain</figcaption>
 </p>
 
-Unfortunately, instead of the colorful image, researchers work with a matrix of weighted scalars representing connection strength between pairs of brain regions:
+Instead of the colorful image, researchers work with a matrix of weighted scalars representing connection strength between pairs of brain regions:
 
 <p align = "center">
 <img src = "/figures/b03_fs2_scmatrix.png" style = "width:350px">
@@ -64,9 +62,9 @@ And the <em>degree matrix</em> $D$ is defined as an N-dimensional diagonal matri
 
 $$
 \begin{gathered}
-L = D - C \\
-L = I - D^{-1/2} C D^{-1/2} \\
-L = I - D^{-1} C
+L_{norm} = D - C \\
+L_{symmetric} = I - D^{-1/2} C D^{-1/2} \\
+L_{random walk} = I - D^{-1} C
 \end{gathered}
 $$
 
@@ -110,9 +108,7 @@ We are starting to see anterior and posterior separation! What about **five**:
 In addition to the four big lobes, we are starting to see functionally specialized regions being highlighted. The new group right in the middle of the two hemispheres include regions like the precuneus, and the cingulum. These are some of the earliest identified brain structures, and obviously play critical roles in brain function.
 
 ## Rubber band interpretation
-So why does this grouping happen? The name <em>spectral</em> clustering comes from spectral graph theory, which is the study of a graph's characteristic polynomials, or eigen values and eigen vectors of a graph. Remember when I mentioned graph Laplacians have "nice" eigen properties? All spectral clustering algorithms rely on these "nice" eigen properties. 
-
-One can interpret spectral clustering as stretching a bunch of interconnected rubber bands: how would the rubber bands bounce around in response to a perturbation? Or in terms of eigen vectors: how would the characteristics (eigen vectors and eigen values) of a network of rubber bands $M$ change if we add a small perturbation $P$? Then we consider a perturbed network of rubber bands $\widetilde{M} = M + P$, then the distance in eigen-space between the eigen vectors of $\widetilde{M}$ and $M$ is simply some scalar times the norm of $P$.
+So why does this grouping happen? The name <em>spectral</em> clustering comes from spectral graph theory, which is the study of a graph's characteristic polynomials, or eigen values and eigen vectors of a graph. Remember when I mentioned graph Laplacians have "nice" eigen properties? All spectral clustering algorithms rely on these "nice" eigen properties.
 
 In an ideal scenario where we want $k$ clusters of a similarity matrix $M$, where the data points in each $i$-th cluster $k_i$ have a similarity of 0 (no difference at all, exactly the same), then the eigen vectors of this $M$ will represent each cluster as:
 
@@ -125,9 +121,9 @@ $$
 \end{bmatrix}
 $$
 
-And all data points belonging to the same cluster $k_i$ will coincide to the $i$-th eigen vector. Any simple clustering algorithm can trivially separate these data points. 
+And all data points belonging to the same cluster $k_i$ will coincide to the $i$-th eigen vector. Any simple clustering algorithm can trivially separate these data points.
 
-Now in the case of our brain connection strengths ($C$), we are far from ideal, but we know this is some distance away from this ideal matrix $M$: $C = M + P$. Now if we minimize the distance shared by the ideal and perturbed eigen vectors, we can claim that the perturbed eigen vectors behave approximately the same as the ideal eigen vectors. **This is just the mathy way of saying, let's stretch out this network of rubber bands, and observe their behavior as they relax back to their natural state, and we will categorize these rubber bands based on their relaxation behavior.**
+Now in the case of our brain connection strengths ($C$), we are far from ideal, but we know this is some distance away from this ideal matrix $M$: $C = M + P$, where $P$ is a perturbation. Now if we minimize the distance shared by the ideal and perturbed eigen vectors, we can claim that the perturbed eigen vectors behave approximately the same as the ideal eigen vectors. **This is just the mathy way of saying, let's stretch out this network of rubber bands, and observe if they can be stretched to our ideal scenario, and we will categorize these rubber bands based on our expected ideal scenario as best as we can.** One ends up interpreting spectral clustering as stretching a bunch of interconnected rubber bands: how much change does the rubber bands experience if we stretched it? Or in terms of eigen vectors: how would the eigen vectors and eigen values of a network $M$ change if we add a small perturbation $P$?
 
 Spectral clustering and utilizing Laplacian eigen vectors is much more poweful than simply clustering data points as they are. Here's a good example of k-means algorithm vs. spectral clustering, where the k-means algorithm fails to determine the best separation between the data points:
 
@@ -142,3 +138,5 @@ In spectral clustering, rather than computing the variances in a raw dataset, we
 - The Lab post-doc [Pablo Damasceno's](https://github.com/pfdamasceno/spectral_decomposition) jupyter notebook on spectral clustering. He presented this metholody at a lab meeting first :). 
 
 - Von Luxburg, U. (2007). A tutorial on spectral clustering. Statistics and Computing, 17(4), 395–416. https://doi.org/10.1007/s11222-007-9033-z
+
+- Ivković, M., Kuceyeski, A., & Raj, A. (2012). Statistics of weighted brain networks reveal hierarchical organization and gaussian degree distribution. PLoS ONE, 7(6), e35029. https://doi.org/10.1371/journal.pone.0035029
