@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Shrouded in Mist
-email: xihe.xie@ucsf.edu
+email: xix2007@med.cornell.edu
 description: >- # this means to ignore newlines until "baseurl:"
   Neuroscience is a mysterious interdisciplinary field, trying to finish
   my PhD is like navigating through the heavy misty SF fog. It's dangerous to go alone! 
