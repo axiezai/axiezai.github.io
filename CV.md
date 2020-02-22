@@ -1,5 +1,5 @@
 ---
 layout: page
-title: Currivulum Vitae
+title: Curriculum Vitae
 permalink: /assets/cv.pdf
 ---
