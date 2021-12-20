@@ -35,4 +35,4 @@ gem "github-pages", group: :jekyll_plugins
 gem "jekyll-default-layout"
 
 # Addressing security concerns:
-gem "nokogiri", "~> 1.11.4"
+gem "nokogiri", "~> 1.12.5"
