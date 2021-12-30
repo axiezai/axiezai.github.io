@@ -1,24 +1,15 @@
 ---
-layout: page
+layout: null
+section-type: about
 title: About
-permalink: /about/
 ---
-<img src = "/figures/profile.jpg" style = "float:right;width:250px;">
-I'm a biomedical engineer that became jaded with the industry and went back to school. In the midst of my neuroscience Ph.D. candidacy at Weill Cornell Graduate School of Medical Sciences, my P.I. decided to move our operation across the country, and I suddenly find myself lost in the misty fog that shrouds the Bay Area.
+## About
 
-Neuroscience is an interdisciplinary field, and you can expect the same variety from these blogs. My current [UCSF lab](https://rajlab.ucsf.edu/) is always finding creative ways to apply mathematical models and computation algorithms to brain dynamics. One such combination is extracting graph properties of brain networks to investigate neurological disorders like dementia, neurodegeneration, traumatic brain injury, and epilepsy. This work requires techniques in neuroimaging, signal processing, computational biology/neurology, model optimization, and lots of traveling between the time and frequency worlds.
+I studied the brain through big data and high dimensional math. I improved my data practices through participating in [Brainhack events](https://brainhack.org/) and training during the [ReproNim/INCF fellowship](https://www.repronim.org/), now I hope to make some contributions outside of academia.
 
-Outside of the lab, I'm capitalizing on every single opportunity to play volleyball, no matter indoors or outdoors. Currently dedicating my leisure times to learning piano/keyboard and photography. I also love reading on commutes, and the best commutes are when I'm collecting passport stamps. 
+<small>
+This website is built from the personal jekyll theme. You can click on the following links to star and fork the original repo to replicate the website for your own.</small>
 
-This blog is inspired by:
+<iframe src="https://ghbtns.com/github-btn.html?user=le4ker&repo=personal-jekyll-theme&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
-- all the principles I learned at 
-			<a ref="https://neurohackademy.org/">Neurohackademy 2018</a>, hosted by University of Washington's eScience Institute. Where the open science community welcomed me with open arms and rejuvenated my curiosity as a researcher.
-
-- <a ref="https://twitter.com/keschh">Kristian Eschenburg's</a> blog posts about the Hackademy via his Github page, which spurred me to create my own page to maintain my Git practices and work on my writing.
-
-- My own ruminations about certain concepts or ideas, some of which often leave me deliberating with myself for the entirety of my commute and keep me awake at night. What better way to ponder than to write a blog, and practice Git and learn at the same time!
-
-- Dr. Paul Kalanithi's *When Breath Becomes Air*.
-
-[jekyll-organization]: https://github.com/jekyll
+<iframe src="https://ghbtns.com/github-btn.html?user=le4ker&repo=personal-jekyll-theme&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
