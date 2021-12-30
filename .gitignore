@@ -1,3 +1,20 @@
+# -*- mode: gitignore; -*-
 _site
 .sass-cache
 .jekyll-metadata
+
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+*.swp
+pkg/
+test/
+_deploy/*
+Rakefile
+/.idea/
