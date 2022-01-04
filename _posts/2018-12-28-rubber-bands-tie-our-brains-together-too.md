@@ -1,8 +1,9 @@
 ---
 layout: post
+section-type: post
 title: 'Rubber Bands Tie Our Brains Together Too'
-date: 2018-12-28 22:16:00
-categories: jekyll update
+categories: tech 
+tags: [ 'blog' ]
 mathjax: true
 ---
 <p style = "font-family:Tahoma; text-align:center;">
