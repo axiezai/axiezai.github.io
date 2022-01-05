@@ -1,10 +1,10 @@
 ---
 layout: post
 section-type: post
-title: 'Rubber Bands Tie Our Brains Together Too'
+title: Rubber Bands Tie Our Brains Together Too
 categories: tech 
-tags: [ 'blog' ]
-mathjax: true
+tags: [ 'neuro','data science','tech' ]
+usemathjax: true
 ---
 <p style = "font-family:Tahoma; text-align:center;">
 Rubber bands in brains? Brief intro to graph representations and the mysteries behind spectral clustering.
@@ -19,13 +19,7 @@ People use hair bands to bundle up their messy hair all the time. As it turns ou
 
 My lab is often curious about how the brain's structure lead to function. In the case of human brains, the architecture of axons and their myelinated sheath facilitate the diffusion of water molecules along their main directions. By estimating the diffusion gradient in various ${x,y,z}$ directions, we can map out the underlying fiber structure that connects specialized brain regions of interest. The raw data is simply a bunch of estimated vectors in the ${x,y,z}$ directions:
 
-$$
-\begin{Bmatrix}
-x_1 & x_2 & ... & x_n \\ 
-y_1 & y_2 & ... & y_n \\
-z_1 & z_2 & ... & z_n
-\end{Bmatrix}
-$$
+\begin{Bmatrix}x_1 & x_2 & \ldots & x_n \\\ y_1 & y_2 & \ldots & y_n \\\ z_1 & z_2 & \ldots & z_n\end{Bmatrix}
 
 We can get artsy with these vectors and draw out all the fiber connections inside the brain by following the diffusion parameters voxel by voxel, publishers love these colorful images:
 
@@ -51,23 +45,13 @@ Given this set of $N$ brain regions $x_1, ..., x_N$ and connection strength $c_{
 <figcaption style = "font-size:65%; text-align : center;">Wikipedia has a nice image visualizing the nodes (vertices) and edges of a graph: https://en.wikipedia.org/wiki/Vertex_(graph_theory)</figcaption>
 </p>
 
-Additionally, for each node/vertex $V_i \in V$ (English: $V_i$ inside of V), we define the <em>degree</em> of that node as the sum of the weights to adjacent nodes: 
-
-$$
-\begin{align*}
-d_i = \sum_{j=1}^{N} c_{i,j}
-\end{align*}
-$$
+Additionally, for each node/vertex $V_i \in V$ (English: $V_i$ inside of V), we define the <em>degree</em> of that node as the sum of the weights to adjacent nodes: $d_i = \sum_{j=1}^{N} c_{i,j}$.
 
 And the <em>degree matrix</em> $D$ is defined as an N-dimensional diagonal matrix where the degrees $d_i, ..., d_N$ is on the diagonal. This is important because we need to use the degree matrix $D$ to construct <em>graph Laplacians</em> $L$, these Laplacians will be the input to our spectral clustering algorithm. We want these Laplacians because they have "nice" properties like 1) $L$ is symmetric and positive semi-definite, 2) $0$ is an eigenvalue of $L$ and it's corresponding eigenvector is a constant vector of ones, or 3) $L$ has non-negative, real-valued eigenvalues $0 = \lambda_1 \leq \lambda_2 \leq ... \leq \lambda_N$. These properties are shared by graph Laplacians regardless of how you define your $L$:
 
-$$
 \begin{gathered}
-L_{norm} = D - C \\
-L_{symmetric} = I - D^{-1/2} C D^{-1/2} \\
-L_{random walk} = I - D^{-1} C
+L_{norm} = D - C \\\ L_{symmetric} = I - D^{-1/2} C D^{-1/2} \\\ L_{random walk} = I - D^{-1} C
 \end{gathered}
-$$
 
 After transforming our data into the graph Laplacian, we can rephrase the clustering problem: **we want to find a partition of the graph such that the edges between different groups have low weights (different clusters are less likely to be associated with each other), and the edges within a group have high weights (data points within the same cluster are closely associated).** To keep our sanities in tact, I am neglecting some details such as directionality ($c_{i,j} = c_{j,i} \geq 0$) and local neighborhood relationships inside the graph.
 
@@ -113,14 +97,9 @@ So why does this grouping happen? The name <em>spectral</em> clustering comes fr
 
 In an ideal scenario where we want $k$ clusters of a similarity matrix $M$, where the data points in each $i$-th cluster $k_i$ have a similarity of 0 (no difference at all, exactly the same), then the eigen vectors of this $M$ will represent each cluster as:
 
-$$
 \begin{bmatrix}
-1 & 0 & ... & 0\\ 
-0 & 1 & ... & 0\\ 
-\vdots & \vdots & \ddots  & \vdots\\ 
-0 & 0 & ... & 1
+1 & 0 & ... & 0\\\ 0 & 1 & ... & 0\\\ \vdots & \vdots & \ddots  & \vdots\\\ 0 & 0 & ... & 1
 \end{bmatrix}
-$$
 
 All clusters are distinctly different from each other, and all data points belonging to the same cluster $k_i$ will coincide to the $i$-th eigen vector. Any simple clustering algorithm can trivially separate these data points.
 
