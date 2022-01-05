@@ -2,7 +2,6 @@
 # Site settings
 
 # NB! Set your site's url, otherwise stuff will break :)
-
 url: "https://axiezai.github.io"
 
 # If you're hosting your site at a Project repository on GitHub pages
@@ -12,22 +11,19 @@ url: "https://axiezai.github.io"
 #
 # NB! Without this *nothing* will work, because it's used in every path :)
 
-baseurl: /personal
+baseurl: "/personal"
 
 # Google tracking id
-
 google-tracking-id: "UA-125027007-1"
 
 # Forces https everywhere in your website, except when you serve it locally
 # If you are not hosted on Github Pages, and your host doesn't support https
 # then you should disable it
-
 force-https: True
 
 #############
 # HTML Head #
 #############
-
 lang: "en"
 author: "Xi He Xie"
 title: "{ ludus }"
@@ -47,17 +43,16 @@ background-img: "../img/intro-bg.jpg"
 ##############################
 # Dynamic Text on the Header #
 ##############################
-
 dynamic-typing: True
 shuffle: True # Shuffle the lines.
 loop: True
 loop-count: False # Set False for infinite loop, or set any number for finite loop.
 type-speed: 10
 start-delay: 200
-delete-delay: 5000
+delete-delay: 4500
 lines: # You can add HTML Tags in the Text
-  - text: "The lower you fall, the higher you'll fly."
-  - text: "Where’s your will to be weird?"
+  - text: "<q>PhD stands for permanent head damage</q> - one of my teachers."
+  - text: "<q>You're such a nerd.</q> - A non-academic."
 
 me-img: "/img/author.png"
 
@@ -90,11 +85,9 @@ apple-status-bar-style: "black"
 ################
 # Web app mode #
 ################
-
 web-app-mode: True
 
 # Icons for Web App mode
-
 icon-36p: "/img/web-app/icon-36p.png"
 icon-48p: "/img/web-app/icon-48p.png"
 icon-72p: "/img/web-app/icon-72p.png"
@@ -110,7 +103,7 @@ enable-gesture-navigation: True
 
 post-preview-words: 96
 
-paginate: 5
+paginate: 10 
 
 email-share: True
 fb-share: False 
@@ -133,15 +126,24 @@ syntax-highlight: True
 
 events:
   - image: "/img/timeline/spidertocat.png"
-    date: "September 2013 - Today"
-    description: "Saving the neighborhood!"
+    date: "August 2015 - December 2021"
+    description: "Finished the Ph.D!"
+  - image: "/img/timeline/neuromatch-icon.png"
+    date: "August 2021"
+    description: "Attended Neuromatch Deep Learning!"
   - image: "/img/timeline/baracktocat.jpg"
-    date: "September 2007 - August 2013"
-    description: "Started coding"
+    date: "June 2020"
+    description: "Organized Brainhack NY!"
+  - image: "/img/timeline/repronim-icon.png"
+    date: "March 2020 - Today"
+    description: "Became a ReproNim/INCF Fellow!"
+  - image: "/img/timeline/baracktocat.jpg"
+    date: "August 2018"
+    description: "Attended Neurohackademy in Seattle!"
 
 # First image of the Timeline
 
-timeline-img: "/img/timeline/default.png"
+timeline-img: "/img/author.png"
 
 ###########
 # Contact #
@@ -161,7 +163,7 @@ pgp: False
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "John Smith is an awesome person. He lives in Flatland, where he works on two-dimensional engineering projects. In his spare time, John likes to eat cotton candy."
+author_blurb: "Often compelled, sometimes high on coffee, very random attempts to <a href='https://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html'>blog like a hacker</a>."
 author_blurb_image: "/img/author.png"
 
 ##################
@@ -173,10 +175,6 @@ social:
     url: "https://twitter.com/axiezai"
   - title: "github"
     url: "https://github.com/axiezai"
-  - title: "bitcoin"
-    url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
-  - title: "rss"
-    url: "/feed.xml"
 
 ############
 # 404 page #
