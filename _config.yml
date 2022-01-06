@@ -34,7 +34,6 @@ favicon: "/img/favicon.ico"
 ################
 # Header layout #
 ################
-
 black-favicon: "/img/black-brain.ico"
 # logo: "/img/author.png" # leave blank if you don't want a logo
 
@@ -98,7 +97,6 @@ icon-192p: "/img/web-app/icon-192p.png"
 ########
 # Blog #
 ########
-
 enable-gesture-navigation: True
 
 post-preview-words: 96
@@ -123,10 +121,9 @@ syntax-highlight: True
 ############
 # Timeline #
 ############
-
 events:
   - image: "/img/timeline/spidertocat.png"
-    date: "August 2015 - December 2021"
+    date: "December 2021"
     description: "Finished the Ph.D!"
   - image: "/img/timeline/neuromatch-icon.png"
     date: "August 2021"
@@ -134,21 +131,25 @@ events:
   - image: "/img/timeline/baracktocat.jpg"
     date: "June 2020"
     description: "Organized Brainhack NY!"
+  - image: "/img/timeline/nyc-icon.png"
+    date: "February 2021"
+    description: "Settled back home in NYC!"
   - image: "/img/timeline/repronim-icon.png"
     date: "March 2020 - Today"
     description: "Became a ReproNim/INCF Fellow!"
   - image: "/img/timeline/baracktocat.jpg"
     date: "August 2018"
     description: "Attended Neurohackademy in Seattle!"
+  - image: "/img/timeline/sf-icon.png"
+    date: "April 2018"
+    description: "Moved to San Francisco!"
 
 # First image of the Timeline
-
 timeline-img: "/img/author.png"
 
 ###########
 # Contact #
 ###########
-
 email: "xihe.init@gmail.com"
 
 
@@ -158,7 +159,6 @@ pgp: False
 ################
 # Author Blurb #
 ################
-
 # The author blurb goes underneath blog posts.
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
@@ -169,7 +169,6 @@ author_blurb_image: "/img/author.png"
 ##################
 # Social Buttons #
 ##################
-
 social:
   - title: "twitter"
     url: "https://twitter.com/axiezai"
@@ -179,7 +178,6 @@ social:
 ############
 # 404 page #
 ############
-
 err-404-img: "/img/labtocat.png"
 
 # ##################
@@ -195,7 +193,6 @@ err-404-img: "/img/labtocat.png"
 # NB! Tread carefully if you want to change the variables below this point!
 
 # Sections shown in the index page
-
 pages_list:
   About: 'about'
   Blog: 'latest-post'
@@ -203,15 +200,12 @@ pages_list:
   Contact: 'contact'
 
 # Exclusion list from the generated _site
-
 exclude: ["LICENSE", "README.md", "CONTRIBUTING", "CONTRIBUTORS", "scripts"]
 
 # Pagination path
-
 paginate_path: "blog/page:num/"
 
 # Enable minification SASS
-
 sass:
   style: compressed
 
