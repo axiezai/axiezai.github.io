@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 title: Rubber Bands Tie Our Brains Together Too
-categories: tech 
+category: tech 
 tags: [ 'neuro','data science','tech' ]
 usemathjax: true
 ---
