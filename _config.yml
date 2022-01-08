@@ -11,7 +11,8 @@ url: "https://axiezai.github.io"
 #
 # NB! Without this *nothing* will work, because it's used in every path :)
 
-baseurl: "/personal"
+# baseurl: "/personal"
+baseurl: ""
 
 # Google tracking id
 google-tracking-id: "UA-125027007-1"
