@@ -1,8 +1,9 @@
 ---
 layout: post
-title: 'Antarcticans Have It Better Than Us'
-date: 2018-10-03 20:37:00
-categories: jekyll update
+section-type: post
+title: Antarcticans Have It Better Than Us
+category: thoughts
+tags: [ 'neuro' ]
 ---
 <img src="/figures/panorama1.jpg" class="center-image">
 

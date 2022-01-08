@@ -1,8 +1,9 @@
 ---
 layout: post
-title: 'Neuroimaging, GANs, and Dota2'
-date: 2018-08-31 17:52:00
-categories: jekyll update
+section-type: post
+title: Neuroimaging, GANs, and Dota2
+category: tech
+tags: [ 'neuro', 'tech' ]
 ---
 
 Having recently attended [Neurohackademy 2018](https://neurohackademy.org/) hosted by UW's eScience Institute, I find myself swimming in an ocean of ideas that's just waiting to be explored. The two-week conference and hackathon was hosted by a group of neuroimaging scientists dedicated to open science, and it was well-received by both [students](https://kristianeschenburg.github.io/2018/08/neurohackademy-open-science) and [instructors](http://www.talyarkoni.org/blog/2018/08/16/neurohackademy-2018-a-wrap-up/). I believe the lingering feels from the hackademy plus the spirit of open science inspired many students, including myself, to begin blogging and sharing their journeys in science. During the hackademy, OpenAI held a benchmark event in San Francisco where robots competed against humans in a game of Dota2. This will be my attempt at telling a story that connects neuroimaing, machine learning, and [the most competitive video game tournament in the world](http://www.dota2.com/international/overview/). 
