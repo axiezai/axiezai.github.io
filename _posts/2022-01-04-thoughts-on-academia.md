@@ -13,10 +13,10 @@ I had the priviledge of joining a well funded lab at a R1 institution, and my pr
 
 The graduate school offered a wide array of seminars to expand the scientific perspectives of students and faculty. My thesis work was focused on neuroimaging and network theories of brain activity, but there was no shortage of neuroscience seminars to keep me refreshed and curious about topics outside of my lab. I was also lucky enough to enroll in a collaborative institution with many like-minded students. Some times institutions push students to compete, students in the same classes do not get along, or labs are fearful of their new work being "scooped" by another. I had no problems establishing good relationships with cordial professors or bonding with fellow students. 
 
-While I'm grateful for my experiences, the complaints I've heard along the way are systematics, which unfortunately deter excellent thinkers from further pursuits in academia.
-
 
 ## Uncertainty
+
+
 Columbia student strikes -> doesn't end at the postdoc level
 noah's conversation
 
