@@ -13,9 +13,11 @@ I had the priviledge of joining a well funded lab at a R1 institution, and my pr
 
 The graduate school offered a wide array of seminars to expand the scientific perspectives of students and faculty. My thesis work was focused on neuroimaging and network theories of brain activity, but there was no shortage of neuroscience seminars to keep me refreshed and curious about topics outside of my lab. I was also lucky enough to enroll in a collaborative institution with many like-minded students. Some times institutions push students to compete, students in the same classes do not get along, or labs are fearful of their new work being "scooped" by another. I had no problems establishing good relationships with cordial professors or bonding with fellow students. 
 
+Out of my neuroscience class of nine students, only two are continuing in academia.
 
-## Uncertainty
 
+## Pressure
+The situation was best summarized by one of my classmates pursuing a Post-doctoral position: 
 
 Columbia student strikes -> doesn't end at the postdoc level
 noah's conversation
@@ -24,6 +26,8 @@ noah's conversation
 prof vs project managers
 
 ## Publishing
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Scientific research is paying $12,000 USD for a Nature paper generated from the work of grad students who can&#39;t even cover their rent.</p>&mdash; Janette Edson (@geeky_jane) <a href="https://twitter.com/geeky_jane/status/1481408604268015617?ref_src=twsrc%5Etfw">January 12, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 Elsevier strike
 
 ProQuest ? 
