@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: Rubber Bands Tie Our Brains Together Too
 category: tech 
-tags: [ 'neuro','data science','tech' ]
+tags: [ 'neuro','datascience','machine learning']
 usemathjax: true
 ---
 <p style = "font-family:Tahoma; text-align:center;">
