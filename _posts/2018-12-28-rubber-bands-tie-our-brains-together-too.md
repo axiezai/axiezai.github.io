@@ -12,7 +12,7 @@ Rubber bands in brains? Brief intro to graph representations and the mysteries b
 
 <p align = "center">
 <img src = "https://imgs.xkcd.com/comics/rubber_sheet_2x.png">
-<figcaption style = "font-size:65%">Source: xkcd.com/1158/</figcaption>
+<figcaption align="center" style = "font-size:65%">Source: xkcd.com/1158/</figcaption>
 </p>
 
 People use hair bands to bundle up their messy hair all the time. As it turns out, this simple act of using elasticity is similar to a clustering approach that groups together messy data. Here, I'd like to show some cool brains as an introduction to spectral clustering, and explain how a popular clustering algorithm can be simply viewed as perturbations of rubber bands.
@@ -25,14 +25,14 @@ We can get artsy with these vectors and draw out all the fiber connections insid
 
 <p align = "center">
 <img src = "/figures/b03_dti.png" style = "width:200px">
-<figcaption style = "font-size:65%; text-align:center">White matter fibers inside a human brain</figcaption>
+<figcaption align="center" style = "font-size:65%; text-align:center">White matter fibers inside a human brain</figcaption>
 </p>
 
 Instead of the colorful image, researchers work with a matrix of weighted scalars representing connection strength between pairs of brain regions:
 
 <p align = "center">
 <img src = "/figures/b03_fs2_scmatrix.png" style = "width:350px">
-<figcaption style = "font-size:65%; text-align:center;"> Structural connectivity matrix, notice how the intra-hemisphere connections are dense (near the diagonal), whereas the inter-hemisphere connections are sparse (off-diagonal squares). Colors inside the matrix represent the connectivity strength between regions. </figcaption>
+<figcaption align="center" style = "font-size:65%; text-align:center;"> Structural connectivity matrix, notice how the intra-hemisphere connections are dense (near the diagonal), whereas the inter-hemisphere connections are sparse (off-diagonal squares). Colors inside the matrix represent the connectivity strength between regions. </figcaption>
 </p>
 
 The obvious flaw in this matrix is that there is no spatial information about the data points. We only know the connection strengths between regions, but we do not know the location of each brain region, and we have no coordinate system defining the relative distance between each adjacent brain region. While this is a fatal weakness in our data, by utilizing rubber bands, i.e., spectral clustering, we can group these data points onto a brain without spatial information. 
@@ -109,7 +109,7 @@ Spectral clustering and utilizing Laplacian eigen vectors is much more poweful t
 
 <p align = "center">
 <img src = "/figures/b03_kmeans_comparison.png">
-<figcaption style = "font-size:65%; text-align : center;">Source: CMU's ML course slides</figcaption>
+<figcaption align="center" style = "font-size:65%; text-align : center;">Source: CMU's ML course slides</figcaption>
 </p>
 
 In spectral clustering, rather than computing the variances in a raw dataset, we use a dataset's innate properties! We stretch the data around to see how it would react, and group them together based on their spectral properties. This methodology is extremely popular in machine learning, and has been extended to all sorts of data science settings. It's a neat little tool to keep in every neuroscientist's pockets.
