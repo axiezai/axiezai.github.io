@@ -48,4 +48,6 @@ plt.plot(x_tst, reg_line, "r", label='OLS', linewidth=4)
 </p>
 
 
-The `fit()` method will find the weights `w` and intercept `b` for the linear approximation $w\pmb{x} + b$ that minimizes the squared sum error. With `LinearRegression`, we can call the `score()` method to obtain a $R^2$ coefficient of determination. In this case, we obtained $\hat{w} = 0.16$ and $\hat{b} = 5.44$ with a $R^2$ coefficient of $0.66$. 
+The `fit()` method will find the weights `w` and intercept `b` for the linear approximation $w\pmb{x} + b$ that minimizes the squared sum error. With `LinearRegression`, we can call the `score()` method to obtain a $R^2$ coefficient of determination. In this case, we obtained $\hat{w} = 0.16$ and $\hat{b} = 5.44$ with a $R^2$ coefficient of $0.66$. The model does a pretty decent job, but the $R^2$ coefficient doesn't capture the uncertainly of 150 prediction by itself alone.
+
+## Probabilistic approach with TensorFlow
