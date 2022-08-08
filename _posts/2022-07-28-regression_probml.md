@@ -6,7 +6,7 @@ category: thoughts
 tags: [ 'datascience', 'machinelearning' ]
 ---
 
-The examples displayed here are taken from [Kevin Murphy](https://twitter.com/sirbayes)'s probabilistic machine learning [Colab notebook](https://code.probml.ai/book1/2.14).
+The examples displayed here are taken from [Kevin Murphy](https://twitter.com/sirbayes)'s probabilistic machine learning [Colab notebook](https://code.probml.ai/book1/2.14). I found the code to be very instructive when paired with the math formulations, and thought I'd expand the logic here.
 
 Linear regression is a basic curve fitting technique using a straight line model to approximate the data trend. However, when the data is noisy, scientists need to understand the assumptions and quantify the reliability of their curve fitting methods. A probabilistic approach to modeling enables the quantification of uncertainty, and I recently encountered an interesting implementation of probabilistic regression that's worth explaining for `TensorFlow` beginners. We will first look at linear regression in it's simplest form, and then create a `Sequential` model for the probabilistic approach.
 
@@ -47,7 +47,64 @@ plt.plot(x_tst, reg_line, "r", label='OLS', linewidth=4)
 <figcaption align="center" style="font-size:65%"> Linear regression using ordinary least squares.</figcaption>
 </p>
 
+The `fit()` method will find the weights `w` and intercept `b` for the linear approximation $w\pmb{x} + b$ that minimizes the squared sum error. With `LinearRegression`, we can call the `score()` method to obtain a $R^2$ coefficient of determination. In this case, we obtained $\hat{w} = 0.16$ and $\hat{b} = 5.44$ with a $R^2$ coefficient of $0.66$. The model does a pretty decent job, but the $R^2$ coefficient doesn't capture the uncertainty of 150 prediction by itself alone.
 
-The `fit()` method will find the weights `w` and intercept `b` for the linear approximation $w\pmb{x} + b$ that minimizes the squared sum error. With `LinearRegression`, we can call the `score()` method to obtain a $R^2$ coefficient of determination. In this case, we obtained $\hat{w} = 0.16$ and $\hat{b} = 5.44$ with a $R^2$ coefficient of $0.66$. The model does a pretty decent job, but the $R^2$ coefficient doesn't capture the uncertainly of 150 prediction by itself alone.
+## Probabilistic Regression Overview
 
-## Probabilistic approach with TensorFlow
+The general approach is to obtain a conditional probability density $p$, based on some observed data $x$ and model parameters $\theta$. If we assume the probability density to be Gaussian shaped, then we will only have to worry about the mean and variance:
+
+$$
+p(y \mid \boldsymbol{x} ; \boldsymbol{\theta})=\mathcal{N}\left(y \mid f_{\mu}(\boldsymbol{x} ; \boldsymbol{\theta}), f_{\sigma}(\boldsymbol{x} ; \boldsymbol{\theta})^{2}\right)
+$$
+
+where $f_{\mu}$ and $f_{\sigma}$ predicts the mean and variance respectively. 
+
+With this formulation, we can already see one advantage of the probabilistic approach, we can make the variance depend on the input $\boldsymbol{x}$, which is called __heteroskedastic regression__. And assuming we are working with linear function (linear regression), we have:
+
+$$
+p(y \mid \boldsymbol{x} ; \boldsymbol{\theta})=\mathcal{N}\left(y \mid \boldsymbol{w}_{\mu}^{\top} \boldsymbol{x}+b, \sigma_{+}\left(\boldsymbol{w}_{\sigma}^{\top} \boldsymbol{x} + b\right)\right)
+$$
+
+with $\sigma_{+}$ being the "softplus" function: $\sigma_{+} (a) = \log (1 + e ^{a}) $, ensuring the predicted standard deviation is non-negative. And we are looking for the parameters $\boldsymbol{w_{\mu}}, \boldsymbol{w_{\sigma}}, b$.
+
+## TensorFlow Code Explained
+
+We can take advantage of `tensorflow-probability`'s probabilistic models and its flexibility to combine with layering capabilities from `keras`:
+
+ - `Sequential`: evaluates layers with one input and one output in sequence.
+ - `Dense`: our linear model `output = activation(dot(input, weight)+bias)`, and we set `activation=None`, so this is equivalent to $wx + b$. The output becomes an input to the next layer in sequence.
+ - `DistributionLambda`: Takes the output from `Dense` as input to a callable function, and returns a TensorFlow probability `Distribution` instance. Usually one would have to sample the distribution to have a tensor output, but in our case, we want the output as a distribution to compute the log-likelihood cost function.
+
+The full model code:
+
+```python
+model = tf.keras.Sequential(
+    [
+        tf.keras.layers.Dense(2), # 2 outputs, 1 for mean, 1 for variance
+        tfp.layers.DistributionLambda(
+            lambda t: tfd.Normal(loc=t[...,0], scale = tf.math.softplus(0.05 * t[..., 1])) # first output for mean, second output for variance
+        ),
+    ]
+)
+```
+
+You can use the `model.summary()` method for an overview of the structure and parameters in this model:
+
+```python
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_1 (Dense)             (None, 2)                 4         
+                                                                 
+ distribution_lambda_1 (Dist  ((None,),                0         
+ ributionLambda)              (None,))                           
+                                                                 
+=================================================================
+Total params: 4
+Trainable params: 4
+Non-trainable params: 0
+_________________________________________________________________
+```
+
+The 4 parameters we are training for are the weights and biases for the two linear models. 
