@@ -125,6 +125,9 @@ So now we must figure out the values of $\mu$ and $\sigma^2$ that results in the
 
 ```python
 # define negative log-likelihood cost function
+# Recall that our model output is a Distribution with log_prob method.
+# rv_y is the output Gaussian
+# y is the observed data
 negloglik = lambda y, rv_y: -rv_y.log_prob(y)
 
 # Compile keras model with optimizer and cost function
