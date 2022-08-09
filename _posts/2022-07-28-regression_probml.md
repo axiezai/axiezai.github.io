@@ -9,7 +9,7 @@ usemathjax: true
 
 The examples displayed here are taken from [Kevin Murphy](https://twitter.com/sirbayes)'s probabilistic machine learning [Colab notebook](https://code.probml.ai/book1/2.14). I found the code to be very instructive when paired with the math formulations, and thought I'd expand the logic here for people hoping to explore probabilistic modeling with `tensorflow-probability`.
 
-Linear regression is a basic curve fitting technique using a straight line model to approximate the data trend. However, when the data is noisy, scientists need to understand the assumptions and quantify the reliability of their curve fitting methods. A probabilistic approach to modeling enables the quantification of uncertainty, but this powerful approach is isn't always straight forward without knowledge of the available toolkits. We will first look at linear regression in it's simplest form, and then create a `Sequential` model for the probabilistic approach.
+Linear regression is a basic curve fitting technique using a straight line model to approximate the data trend. However, when the data is noisy, scientists need to understand the assumptions and quantify the reliability of their curve fitting methods. A probabilistic approach to modeling enables the quantification of uncertainty, but implementing this powerful approach is isn't always straight forward for beginners, especially without knowledge of the available toolkits. We will first look at linear regression in it's simplest form, and then create a `Sequential` model for the probabilistic approach.
 
 <p align="center">
 <img src="https://imgs.xkcd.com/comics/linear_regression.png">
