@@ -123,6 +123,9 @@ syntax-highlight: True
 # Timeline #
 ############
 events:
+  - image: "img/timeline/ttd-logo.png"
+    date: "October 2022"
+    description: "Became a data scientist!"
   - image: "/img/timeline/spidertocat.png"
     date: "December 2021"
     description: "Finished the Ph.D!"
